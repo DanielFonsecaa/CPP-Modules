@@ -1,6 +1,6 @@
 MAKE			= make
 
-NAME 			= harlFilter
+NAME 			= fixed
 
 _SUCCESS 		= $(GRN)SUCCESS$(D)
 
@@ -8,7 +8,7 @@ SRC_PATH		= .
 INC_PATH		= .
 
 FILES			= main.cpp \
-				  Harl.cpp
+				  Fixed.cpp
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 

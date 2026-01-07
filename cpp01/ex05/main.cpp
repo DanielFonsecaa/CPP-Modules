@@ -5,7 +5,7 @@ int main(int argc, char **argv){
 
 	if(argc == 1)
 	{
-		std::cout << "Usage: ./harl [debug/info/warning/error]" << std::endl;
+		std::cout << "Usage: ./harl [DEBUG/INFO/WARNING/ERROR]" << std::endl;
 		return 1;
 	}
 	else
