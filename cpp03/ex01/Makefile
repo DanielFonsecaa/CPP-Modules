@@ -8,7 +8,8 @@ SRC_PATH		= .
 INC_PATH		= .
 
 FILES			= main.cpp \
-				  ClapTrap.cpp
+				  ClapTrap.cpp \
+				  ScavTrap.cpp 
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 
