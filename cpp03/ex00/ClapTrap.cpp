@@ -3,19 +3,23 @@
 
 ClapTrap::ClapTrap(){
 	std::cout << "ClapTrap" << this->_name << " is alive!" << std::endl;
-	std::cout << "Constructor called!" << std::endl;
+	std::cout << "Default Constructor called!" << std::endl;
+	_name = "Default";
+	_energyPoints = 10;
+	_hitPoints = 10;
+	_attackDamage = 0;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name) 
 {
-	std::cout << "clap clap" << std::endl;
+	std::cout << "clap clap Name Contructor" << std::endl;
 	_energyPoints = 10;
 	_hitPoints = 10;
 	_attackDamage = 0;
 }
 
 ClapTrap::~ClapTrap () {
-	std::cout << "disclap" << std::endl;
+	std::cout << "disclap the clap" << std::endl;
 };
 
 ClapTrap::ClapTrap(const ClapTrap &other){
@@ -43,14 +47,14 @@ void ClapTrap::attack(const std::string &target)
 		return;
 	}
 	this->_energyPoints --;
-	std::cout << "Clap " << _name << " attacks" << target << "Causing" << this->_hitPoints << "points of damage" << std::endl;
+	std::cout << "Clap " << _name << " attacks " << target << " Causing " << this->_hitPoints << " points of damage" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPoints <= 0)
 	{
-		std::cout << _name << "is already dead" << std::endl;
+		std::cout << _name << " is already dead" << std::endl;
 		return ;
 	}
 	if ((unsigned int)_hitPoints <= amount)
@@ -60,7 +64,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		return ;
 	}
 	_hitPoints -= amount;
-	std::cout << _name << " has taken " << amount << " of damage, having" << _hitPoints << "left" << std::endl;
+	std::cout << _name << " has taken " << amount << " of damage, having " << _hitPoints << " left" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)

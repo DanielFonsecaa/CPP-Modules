@@ -21,7 +21,7 @@ INC_PATH		= includes
 
 FILES			=	PhoneBook.cpp \
 					Contact.cpp \
-					Main.cpp \
+					Main.cpp
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 #OBJS			= $(SRC:$(SRC_PATH)/%.c=$(BUILD_PATH)/%.o)
@@ -50,7 +50,7 @@ all: $(NAME)	## Compile
 
 $(NAME): $(SRC)			## Compile
 	@echo "$(GOLD)Compiling $(SILV)$(NAME)$(GOLD) mandatory version$(D)"
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "[$(_SUCCESS) compiling $(SILV)$(NAME)$(D) $(GOLD)🖔$(D)]"
 	@clear
 #
@@ -65,16 +65,16 @@ $(NAME): $(SRC)			## Compile
 
 clean:				## Remove object files
 	@echo "$(GOLD)Cleaning object files$(D)"
-	$(RM) $(NAME)
-#$(RM) $(BUILD_PATH);
-#$(RM) $(BONUS_BUILD_PATH);
-	@echo "$(GOLD)Removing $(SILV)$(BUILD_PATH) $(D) folder & files$(D): $(_SUCCESS)"; \
+	@$(RM) $(NAME)	
+	@$(RM) $(BUILD_PATH);	
+	@$(RM) $(BONUS_BUILD_PATH);
+	@echo "$(GOLD)Removing $(SILV)$(BUILD_PATH) $(D) folder & files$(D): $(_SUCCESS)";
 
 fclean: clean			## Remove executable and .gdbinit
 	@echo "$(GOLD)Cleaning executables$(D)"
-#	$(RM) $(NAME) 
-#	$(RM) $(NAME_BONUS);
-	echo "$(GOLD)Removing $(SILV)$(NAME)$(D) file: $(_SUCCESS)"; \
+	@$(RM) $(NAME) 
+	@$(RM) $(NAME_BONUS);
+	@echo "$(GOLD)Removing $(SILV)$(NAME)$(D) file: $(_SUCCESS)";
 
 #val: re
 #	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) $(MAP)

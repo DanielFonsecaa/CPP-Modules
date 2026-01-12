@@ -1,19 +1,18 @@
 MAKE			= make
 
-NAME 			= zombie
+NAME 			= clap
 
 _SUCCESS 		= $(GRN)SUCCESS$(D)
 
 SRC_PATH		= .
 INC_PATH		= .
 
-FILES			=	Zombie.cpp \
-					newZombie.cpp \
-					randomChump.cpp \
-					main.cpp \
+FILES			= main.cpp \
+				  ClapTrap.cpp \
+				  ScavTrap.cpp \
+				  FragTrap.cpp 
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
-HEADERS			= $(INC_PATH)/Zombie.hpp
 
 CC				= c++
 
@@ -25,17 +24,18 @@ RM				= rm -rf
 AR				= ar rcs
 MKDIR_P			= mkdir -p
 
+
 all: $(NAME)	## Compile
 
 $(NAME): $(SRC)			## Compile
 	@echo "$(GOLD)Compiling $(SILV)$(NAME)$(GOLD) mandatory version$(D)"
-	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "[$(_SUCCESS) compiling $(SILV)$(NAME)$(D) $(GOLD)🖔$(D)]"
 	@clear
 
 clean:				## Remove object files
 	@echo "$(GOLD)Cleaning object files$(D)"
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 	@echo "$(GOLD)Removing $(SILV)$(BUILD_PATH) $(D) folder & files$(D): $(_SUCCESS)"; \
 
 fclean: clean			## Remove executable and .gdbinit

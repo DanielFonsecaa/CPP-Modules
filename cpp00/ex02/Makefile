@@ -51,16 +51,15 @@ $(NAME): $(SRC)			## Compile
 
 clean:				## Remove object files
 	@echo "$(GOLD)Cleaning object files$(D)"
-	$(RM) $(NAME)
-
-	@echo "$(GOLD)Removing $(SILV)$(BUILD_PATH) $(D) folder & files$(D): $(_SUCCESS)"; \
+	@$(RM) $(NAME)
+	@echo "$(GOLD)Removing $(SILV)$(BUILD_PATH) $(D) folder & files$(D): $(_SUCCESS)";
 
 fclean: clean			## Remove executable and .gdbinit
 	@echo "$(GOLD)Cleaning executables$(D)"
-	$(RM) tmp
-	$(RM) tmp1
-	$(RM) tmp2
-	echo "$(GOLD)Removing $(SILV)$(NAME)$(D) file: $(_SUCCESS)"; \
+	@$(RM) tmp
+	@$(RM) tmp1
+	@$(RM) tmp2
+	echo "$(GOLD)Removing $(SILV)$(NAME)$(D) file: $(_SUCCESS)";
 
 re: fclean all	## Purge & Recompile
 
