@@ -6,7 +6,7 @@
 
 int main()
 {
-	{
+	/*{
 		std::cout << "----------Animal Brains----------" << std::endl;
 		const int size = 10;
 		Animal* animal[size];
@@ -43,6 +43,7 @@ int main()
 		{
 			delete animal[i];
 		}
-	}
+	}*/
+	Animal a;
 	return 0;
 }
