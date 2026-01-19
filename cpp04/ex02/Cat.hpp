@@ -2,18 +2,17 @@
 #include <string>
 #include <iostream>
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Cat : public Animal {
+class Cat : public AAnimal {
 	private:
 		Brain *_brain;
 	public:
 		Cat();
-		Cat(std::string name);
 		Cat(Cat const &Cat);
 		Cat &operator=(Cat const &Cat);
-		~Cat();
+		virtual ~Cat();
 		void makeSound() const;
 		Brain *getBrain() const;
 };

@@ -1,6 +1,6 @@
 MAKE			= make
 
-NAME 			= AAnimal
+NAME 			= bureaucrat
 
 _SUCCESS 		= $(GRN)SUCCESS$(D)
 
@@ -8,13 +8,7 @@ SRC_PATH		= .
 INC_PATH		= .
 
 FILES			= main.cpp \
-				  Animal.cpp \
-				  AAnimal.cpp \
-				  Cat.cpp \
-				  Dog.cpp \
-				  WrongAnimal.cpp \
-				  WrongCat.cpp \
-				  Brain.cpp
+				  Bureaucrat.cpp 
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 

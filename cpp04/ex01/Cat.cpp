@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat() : Animal("Cat"){
 	std::cout << "Cat default constructor" << std::endl;
 	_type = "Cat";
 	_brain = new Brain();
@@ -9,10 +9,6 @@ Cat::Cat() {
 Cat::~Cat(){
 	std::cout << "Cat destructor" << std::endl;
 	delete _brain;
-}
-Cat::Cat(std::string type) : Animal(type){
-	std::cout << "Cat Name constructor" << std::endl;
-	_brain = new Brain();
 }
 
 Cat::Cat(const Cat &other) : Animal(other) {
