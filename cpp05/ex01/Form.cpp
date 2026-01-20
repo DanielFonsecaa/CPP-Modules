@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form() : name("Form"), gradeToSign(), gradeToExec(){
+Form::Form() : name("Form"), gradeToSign(150), gradeToExec(150){
 	std::cout << "Form default constructor" << std::endl;
 	isSigned = false;
 }
@@ -26,7 +26,9 @@ Form::Form(const Form &other) : name(other.name), gradeToSign(other.gradeToSign)
 
 Form &Form::operator=(const Form &other){
 	std::cout << "Form copy assignment" << std::endl;
-	isSigned = other.isSigned;
+	if (this != &other) {
+		isSigned = other.isSigned;
+	}
 	return *this;
 }
 
@@ -59,16 +61,16 @@ void Form::beSigned(Bureaucrat &bureaucrat)
 	else
 	{
 		isSigned = true;
-		std::cout << "Form signed by " << bureaucrat.getName() << std::endl;
+		std::cout << this->getName() << " signed by " << bureaucrat.getName() << std::endl;
 	}
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-    return "Form grade too high";
+	return "Form grade too high";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-    return "Form grade too low";
+	return "Form grade too low";
 }
 
 std::ostream &operator<<(std::ostream &o, Form const &other)

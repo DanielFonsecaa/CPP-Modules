@@ -9,7 +9,10 @@ INC_PATH		= .
 
 FILES			= main.cpp \
 				  Bureaucrat.cpp  \
-				  Form.cpp
+				  AForm.cpp \
+				  ShrubberyCreationForm.cpp \
+				  RobotomyRequestForm.cpp \
+				  PresidentialPardonForm.cpp
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 
