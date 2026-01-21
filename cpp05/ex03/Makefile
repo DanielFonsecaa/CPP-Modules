@@ -12,7 +12,8 @@ FILES			= main.cpp \
 				  AForm.cpp \
 				  ShrubberyCreationForm.cpp \
 				  RobotomyRequestForm.cpp \
-				  PresidentialPardonForm.cpp
+				  PresidentialPardonForm.cpp \
+				  Intern.cpp
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 

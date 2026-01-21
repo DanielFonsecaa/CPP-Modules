@@ -38,6 +38,11 @@ void PresidentialPardonForm::execute(Bureaucrat const &bureaucrat) const
 	std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
+AForm *PresidentialPardonForm::createPresidentialForm(std::string const &target)
+{
+	return new PresidentialPardonForm(target);
+}
+
 std::ostream &operator<<(std::ostream &out, PresidentialPardonForm const &other)
 {
 	out << "Form: " << other.getName() << std::endl;
