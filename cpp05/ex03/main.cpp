@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:53:45 by dda-fons          #+#    #+#             */
-/*   Updated: 2026/01/21 17:43:04 by dda-fons         ###   ########.fr       */
+/*   Updated: 2026/01/21 18:19:47 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,64 +21,72 @@
 int main()
 {
 	{
-		std::cout << "---Test 1---" << std::endl;
-		Intern someRandomIntern;
-		AForm *rrf;
-		AForm *random;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		std::cout << *rrf << std::endl;
 		try
 		{
+			std::cout << "---Test 1---" << std::endl;
+			Intern someRandomIntern;
+			AForm *rrf;
+			AForm *random;
+			rrf = someRandomIntern.makeForm("robotomy reques", "Bender");
+			std::cout << *rrf << std::endl;
 			random = someRandomIntern.makeForm("random", "Bender");
 			std::cout << *random << std::endl;
+		
+			Bureaucrat *b1 = new Bureaucrat("Bureaucrat 1", 150);
+			std::cout << *b1 << std::endl;
+			b1->signForm(*rrf);
+			Bureaucrat *b2 = new Bureaucrat("Bureaucrat 2", 50);
+			std::cout << *b2 << std::endl;
+			b2->signForm(*rrf);
+			b2->executeForm(*rrf);
+			delete b1;
+			delete b2;
+			delete rrf;
+			std::cout << std::endl;
 		}
 		catch(const std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
 		}
-		
-		Bureaucrat *b1 = new Bureaucrat("Bureaucrat 1", 150);
-		std::cout << *b1 << std::endl;
-		b1->signForm(*rrf);
-		Bureaucrat *b2 = new Bureaucrat("Bureaucrat 2", 50);
-		std::cout << *b2 << std::endl;
-		b2->signForm(*rrf);
-		b2->executeForm(*rrf);
-		delete b1;
-		delete b2;
-		delete rrf;
-		std::cout << std::endl;
 	}
 	{
-		std::cout << std::endl;
-		std::cout << "---Test 2---" << std::endl;
-		Intern someRandomIntern;
-		AForm *rrf;
-		AForm *scf;
-		AForm *ppf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-		scf = someRandomIntern.makeForm("shrubbery creation", "Bender");
-		ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
-		std::cout << *rrf << std::endl;
-		std::cout << *scf << std::endl;
-		std::cout << *ppf << std::endl;
-		Bureaucrat *b1 = new Bureaucrat("Bureaucrat 1", 150);
-		std::cout << *b1 << std::endl;
-		b1->signForm(*rrf);
-		b1->signForm(*scf);
-		b1->signForm(*ppf);
-		Bureaucrat *b2 = new Bureaucrat("Bureaucrat 2", 5);
-		std::cout << *b2 << std::endl;
-		b2->signForm(*rrf);
-		b2->signForm(*scf);
-		b2->signForm(*ppf);
-		b2->executeForm(*rrf);
-		b2->executeForm(*scf);
-		b2->executeForm(*ppf);
-		delete b1;
-		delete b2;
-		delete rrf;
-		delete scf;
-		delete ppf;
+		try
+		{
+			
+			std::cout << std::endl;
+			std::cout << "---Test 2---" << std::endl;
+			Intern someRandomIntern;
+			AForm *rrf;
+			AForm *scf;
+			AForm *ppf;
+			rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+			scf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+			ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
+			std::cout << *rrf << std::endl;
+			std::cout << *scf << std::endl;
+			std::cout << *ppf << std::endl;
+			Bureaucrat *b1 = new Bureaucrat("Bureaucrat 1", 150);
+			std::cout << *b1 << std::endl;
+			b1->signForm(*rrf);
+			b1->signForm(*scf);
+			b1->signForm(*ppf);
+			Bureaucrat *b2 = new Bureaucrat("Bureaucrat 2", 5);
+			std::cout << *b2 << std::endl;
+			b2->signForm(*rrf);
+			b2->signForm(*scf);
+			b2->signForm(*ppf);
+			b2->executeForm(*rrf);
+			b2->executeForm(*scf);
+			b2->executeForm(*ppf);
+			delete b1;
+			delete b2;
+			delete rrf;
+			delete scf;
+			delete ppf;
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 	}
 }

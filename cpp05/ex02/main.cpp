@@ -6,7 +6,7 @@
 /*   By: dda-fons <dda-fons@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:44:50 by gude-jes          #+#    #+#             */
-/*   Updated: 2026/01/20 19:39:09 by dda-fons         ###   ########.fr       */
+/*   Updated: 2026/01/21 18:23:36 by dda-fons         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main()
 		std::cout << *robotomy << std::endl;
 		std::cout << std::endl;
 		bureaucrat->signForm(*robotomy);
-		bureaucrat->executeForm(*robotomy); //50% chance of success
+		bureaucrat->executeForm(*robotomy);
 		std::cout << std::endl;
 		std::cout << *robotomy << std::endl;
 		std::cout << std::endl;
