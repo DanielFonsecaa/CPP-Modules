@@ -14,34 +14,35 @@
 class ScalarConverter
 {
 	private:
-		int					type;
-		int					_int;
-		char				_char;
-		float				_float;
-		double				_double;
-		const std::string	input;
+		int							type;
+		int							_int;
+		char						_char;
+		float						_float;
+		double						_double;
+		const std::string			input;
 
 		ScalarConverter();
-
-		int					checkInput(void);
-		void				convertInput(void);
-
-		void				isChar(void);
-		void				isInt(void);
-		void				isFloat(void);
-		void				isDouble(void);
-
-		std::string			getInput(void)const;
-		int					getType(void)const;
-		char				getChar(void)const;
-		int					getInt(void)const;
-		float				getFloat(void)const;
-		double				getDouble(void)const;
-		
-		void				printOutput(void)const;
-	public:
 		ScalarConverter(const std::string input);
-		ScalarConverter(const ScalarConverter &src);
 		~ScalarConverter();
+		ScalarConverter(const ScalarConverter &src);
 		ScalarConverter &operator=(const ScalarConverter &src);
+
+		int							checkInput(void);
+		void						convertInput(void);
+
+		void						isChar(void);
+		void						isInt(void);
+		void						isFloat(void);
+		void						isDouble(void);
+
+		std::string					getInput(void)const;
+		int							getType(void)const;
+		char						getChar(void)const;
+		int							getInt(void)const;
+		float						getFloat(void)const;
+		double						getDouble(void)const;
+
+		void						printOutput(void)const;
+	public:
+		static void 				convert(const std::string &input);
 };

@@ -41,6 +41,11 @@ int ScalarConverter::getInt()const { return _int; }
 float ScalarConverter::getFloat()const { return _float; }
 double ScalarConverter::getDouble()const { return _double; }
 
+void ScalarConverter::convert(const std::string &input)
+{
+	ScalarConverter sc(input);
+}
+
 static bool isStrictInt(const std::string& s)
 {
 	if (s.empty())

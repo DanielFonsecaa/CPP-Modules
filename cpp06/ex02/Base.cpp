@@ -16,7 +16,7 @@ Base* Base::generate(void) {
 void Base::identify(Base* p) {
 	if (!p)
 	{
-		std::cout << "Null pointer\n";
+		std::cout << "Null pointer (ptr)\n";
 		return;
 	}
 	if (dynamic_cast<A*>(p))
@@ -34,7 +34,7 @@ void Base::identify(Base* p) {
 		std::cout << "C\n";
 		return;
 	}
-	std::cout << "Unknown\n";
+	std::cout << "Unknown (ptr)\n";
 }
 
 //this with reference will never be NULL and it will fail with exception.
@@ -57,5 +57,5 @@ void Base::identify(Base& p) {
 		return;
 	}
 	catch (...) {}
-	std::cout << "Unknown\n";
+	std::cout << "Unknown (ref)\n";
 }

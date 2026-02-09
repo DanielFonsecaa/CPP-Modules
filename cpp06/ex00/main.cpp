@@ -7,7 +7,7 @@ static void run_one(const std::string& s)
 	std::cout << "\n============================\n";
 	std::cout << "INPUT: \"" << s << "\"\n";
 	std::cout << "============================\n";
-	ScalarConverter sc(s);
+	ScalarConverter::convert(s);
 }
 
 int main(int argc, char **argv)
