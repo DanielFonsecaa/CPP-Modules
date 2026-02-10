@@ -10,6 +10,12 @@ void add(int &a)
 	a += 1;
 }
 
+void addString(std::string &s)
+{
+	s += "!";
+}
+
+
 int main()
 {
 	int arr[] = {1, 2, 3};
@@ -37,5 +43,16 @@ int main()
 	std::cout << std::endl;
 	std::cout << std::endl;
 
+	std::string c_arr[] = {"a", "b", "c"};
+	std::cout << std::endl << "NORMAL CHAR ARRAY BEFORE: " << std::endl;
+	for (int i = 0; i < 3; i++)
+		std::cout << c_arr[i] << ",";
+	std::cout << std::endl;
+	::iter(c_arr, 3, addString);
+
+	std::cout << std::endl << "NORMAL ARRAY AFTER: " << std::endl;
+	for (int i = 0; i < 3; i++)
+		std::cout << c_arr[i] << ",";
+	std::cout << std::endl;
 	return 0;
 }
