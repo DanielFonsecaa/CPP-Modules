@@ -1,58 +1,33 @@
 #include "iter.hpp"
 
-void print(const int &a)
+class Awesome
 {
-	std::cout << a << ",";
+  public:
+    Awesome( void ) : _n( 42 ) { return; }
+    int get( void ) const { return this->_n; }
+  private:
+    int _n;
+};
+
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+{
+  o << rhs.get();
+  return o;
 }
 
-void add(int &a)
+template< typename T >
+void print( T& x )
 {
-	a += 1;
+  std::cout << x << std::endl;
+  return;
 }
 
-void addString(std::string &s)
-{
-	s += "!";
-}
+int main() {
+  int tab[] = { 0, 1, 2, 3, 4 };
+  Awesome tab2[5];
 
+  iter( tab, 5, print<int> );
+  iter( tab2, 5, print<Awesome> );
 
-int main()
-{
-	int arr[] = {1, 2, 3};
-	const int arr1[] = {4, 5, 6};
-
-	std::cout << std::endl << "NORMAL ARRAY BEFORE: " << std::endl;
-	for (int i = 0; i < 3; i++)
-		std::cout << arr[i] << ",";
-	std::cout << std::endl;
-
-	::iter(arr, 3, add);
-	std::cout << std::endl << "NORMAL ARRAY AFTER: " << std::endl;
-	for (int i = 0; i < 3; i++)
-		std::cout << arr[i] << ",";
-	std::cout << std::endl;
-	
-	
-	std::cout << std::endl << "CONST ARRAY BEFORE: " << std::endl;
-	for (int i = 0; i < 3; i++)
-		std::cout << arr1[i] << ",";
-	std::cout << std::endl;
-	
-	std::cout << std::endl << "CONST ARRAY AFTER: " << std::endl;
-	::iter(arr1, 3, print);
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	std::string c_arr[] = {"a", "b", "c"};
-	std::cout << std::endl << "NORMAL CHAR ARRAY BEFORE: " << std::endl;
-	for (int i = 0; i < 3; i++)
-		std::cout << c_arr[i] << ",";
-	std::cout << std::endl;
-	::iter(c_arr, 3, addString);
-
-	std::cout << std::endl << "NORMAL ARRAY AFTER: " << std::endl;
-	for (int i = 0; i < 3; i++)
-		std::cout << c_arr[i] << ",";
-	std::cout << std::endl;
-	return 0;
+  return 0;
 }
