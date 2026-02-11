@@ -6,18 +6,23 @@
 
 > A comprehensive collection of C++ programming exercises covering fundamental to advanced concepts in C++98 standard.
 
-## Table of Contents
+## 📑 Table of Contents
 
-- [About](#-about)
-- [Modules](#-modules)
-- [Compilation](#-compilation)
-- [Usage](#-usage)
-- [Project Structure](#-project-structure)
-- [Features](#-features)
+- [📖 About](#-about)
+- [📚 Modules](#-modules)
+- [🛠️ Compilation](#️-compilation)
+- [🚀 Usage](#-usage)
+- [📂 Project Structure](#-project-structure)
+- [✨ Features](#-features)
+- [🎯 Concepts Covered](#-concepts-covered)
+- [🧪 Testing](#-testing)
+- [📚 Resources](#-resources)
+- [👤 Author](#-author)
+- [📄 License](#-license)
 
-## About
+## 📖 About
 
-This repository contains a series of C++ modules designed to progressively teach core C++ concepts following the **C++98 standard**. Each module builds upon previous concepts, introducing new features and best practices in object-oriented programming.
+This repository contains a series of C++ modules designed to progressively teach core C++ concepts following the **C++98 standard**. Each module builds upon previous concepts, introducing new features and advanced programming techniques.
 
 ### Learning Objectives
 
@@ -25,15 +30,15 @@ This repository contains a series of C++ modules designed to progressively teach
 - **Memory Management**: Dynamic allocation, RAII principles
 - **Operator Overloading**: Custom operators for user-defined types
 - **Exception Handling**: Try-catch blocks, custom exceptions
-- **Advanced Concepts**: Abstract classes, interfaces, templates
+- **Advanced Concepts**: Abstract classes, interfaces, templates, STL containers
 
-## Modules
+## 📚 Modules
 
 ### CPP Module 00 - Basics
 Introduction to C++ basics, namespaces, classes, and member functions.
 
 **Exercises:**
-- **ex00**:  `megaphone` - String manipulation and character conversion
+- **ex00**: `megaphone` - String manipulation and character conversion
 - **ex01**: `PhoneBook` - Contact management system with classes
 - **ex02**: `Account` - Bank account simulation with timestamps
 
@@ -84,7 +89,7 @@ Advanced polymorphism and abstract classes.
 
 **Exercises:**
 - **ex00**: `Animal` - Basic polymorphism
-- **ex01**:  `Brain` - Deep copy and memory management
+- **ex01**: `Brain` - Deep copy and memory management
 - **ex02**: `AAnimal` - Abstract base classes
 
 **Key Concepts:** Virtual functions, abstract classes, pure virtual functions, deep copying
@@ -102,9 +107,45 @@ Exception handling and bureaucratic forms.
 
 **Key Concepts:** Exception handling, try-catch, custom exceptions, factory pattern
 
+---
+
+### CPP Module 06 - C++ Casts
+Understanding different types of C++ type casting.
+
+**Exercises:**
+- **ex00**: `ScalarConverter` - Convert and display scalar types
+- **ex01**: `Serialization` - Serialize and deserialize data
+- **ex02**: `Identify` - Type identification without dynamic_cast
+
+**Key Concepts:** static_cast, dynamic_cast, reinterpret_cast, const_cast, type conversion
+
+---
+
+### CPP Module 07 - Templates
+Introduction to C++ templates and generic programming.
+
+**Exercises:**
+- **ex00**: `Templates` - Function templates (swap, min, max)
+- **ex01**: `iter` - Template function for arrays
+- **ex02**: `Array` - Template class for dynamic arrays
+
+**Key Concepts:** Function templates, class templates, template specialization, generic programming
+
+---
+
+### CPP Module 08 - STL Containers
+Working with Standard Template Library containers and algorithms.
+
+**Exercises:**
+- **ex00**: `easyfind` - Finding elements in containers
+- **ex01**: `Span` - Container for storing and analyzing numbers
+- **ex02**: `MutantStack` - Stack with iterator support
+
+**Key Concepts:** STL containers, iterators, algorithms, container adapters
+
 ## 🛠️ Compilation
 
-Each module includes a **Makefile** for easy compilation.  All projects are compiled with: 
+Each module includes a **Makefile** for easy compilation. All projects are compiled with:
 
 ```bash
 c++ -Wall -Wextra -Werror -std=c++98
@@ -112,7 +153,7 @@ c++ -Wall -Wextra -Werror -std=c++98
 
 ### Compile a Module
 
-Navigate to any exercise directory and run: 
+Navigate to any exercise directory and run:
 
 ```bash
 make        # Compile
@@ -126,18 +167,18 @@ make re     # Recompile
 From the root directory:
 
 ```bash
-./make_all. sh
+./make_all.sh
 ```
 
-## Usage
+## 🚀 Usage
 
-After compilation, run the executables: 
+After compilation, run the executables:
 
 ```bash
 # Module 00 - ex00
 cd cpp00/ex00
 make
-./megaphone "shhhhh...  I think the students are asleep..."
+./megaphone "shhhhh... I think the students are asleep..."
 
 # Module 00 - ex01
 cd cpp00/ex01
@@ -148,9 +189,19 @@ make
 cd cpp03/ex03
 make
 ./diamondtrap
+
+# Module 07 - ex02
+cd cpp07/ex02
+make
+./array
+
+# Module 08 - ex02
+cd cpp08/ex02
+make
+./mutantstack
 ```
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 CPP/
@@ -181,30 +232,38 @@ CPP/
 │   ├── ex01/          # Form
 │   ├── ex02/          # AForm
 │   └── ex03/          # Intern
+├── 📂 cpp06/          # C++ Casts
+│   ├── ex00/          # ScalarConverter
+│   ├── ex01/          # Serialization
+│   └── ex02/          # Identify
+├── 📂 cpp07/          # Templates
+│   ├── ex00/          # Templates
+│   ├── ex01/          # iter
+│   └── ex02/          # Array
+├── 📂 cpp08/          # STL Containers
+│   ├── ex00/          # easyfind
+│   ├── ex01/          # Span
+│   └── ex02/          # MutantStack
 ├── Makefile           # Root makefile
 └── make_all.sh        # Compilation script
 ```
 
-##  Features
+## ✨ Features
 
-###  Code Quality
+### 💻 Code Quality
 - ✅ Follows **C++98 standard**
 - ✅ **Orthodox Canonical Form** (4 essential member functions)
 - ✅ **RAII** principles for resource management
 - ✅ **Const correctness** throughout
 - ✅ **No memory leaks** (verified with valgrind)
 
-###  Compilation Flags
+### ⚙️ Compilation Flags
 - `-Wall -Wextra -Werror`: Strict warning enforcement
 - `-std=c++98`: C++98 standard compliance
 - `-g`: Debug symbols for development
 
-###  Documentation
-- Clear header files with class interfaces
-- Comprehensive main. cpp test files
-- Makefile with color-coded output
 
-##  Concepts Covered
+## 🎯 Concepts Covered
 
 | Module | Core Concepts |
 |--------|---------------|
@@ -214,28 +273,24 @@ CPP/
 | **03** | 🔹 Inheritance, Virtual functions, Diamond problem |
 | **04** | 🔹 Polymorphism, Abstract classes, Deep copying |
 | **05** | 🔹 Exceptions, Custom exception classes, Factory pattern |
+| **06** | 🔹 Type casting, static_cast, dynamic_cast, reinterpret_cast |
+| **07** | 🔹 Function templates, Class templates, Generic programming |
+| **08** | 🔹 STL containers, Iterators, Algorithms, Container adapters |
 
-##  Testing
+## 🧪 Testing
 
-Each module includes a `main.cpp` with comprehensive tests.  Example outputs demonstrate:
+Each module includes a `main.cpp` with comprehensive tests. Example outputs demonstrate:
 - ✅ Constructor/destructor calls
 - ✅ Memory management correctness
 - ✅ Operator overloading behavior
 - ✅ Exception handling
 - ✅ Polymorphic behavior
+- ✅ Template instantiation
+- ✅ STL container operations
 
-##  Resources
+## 📚 Resources
 
 - [C++ Reference](https://en.cppreference.com/)
 - [Learn C++](https://www.learncpp.com/)
 - [C++98 Standard](https://www.iso.org/standard/25845.html)
-
-##  Author
-
-**Daniel Fonseca** - [@DanielFonsecaa](https://github.com/DanielFonsecaa)
-
-##  License
-
-This project is part of the 42 School curriculum. 
-
----
+- [STL Documentation](https://www.cplusplus.com/reference/stl/)
