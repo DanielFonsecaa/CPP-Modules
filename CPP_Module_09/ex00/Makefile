@@ -1,13 +1,13 @@
 MAKE			= make
 
-NAME 			= mutant
+NAME 			= btc
 
 _SUCCESS 		= $(GRN)SUCCESS$(D)
 
 SRC_PATH		= .
 INC_PATH		= .
 
-FILES			= main.cpp
+FILES			= main.cpp BitcoinExchange.cpp
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 
