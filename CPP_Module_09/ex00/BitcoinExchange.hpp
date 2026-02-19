@@ -7,7 +7,8 @@
 #include <sstream>
 #include <ctime>
 #include <exception>
-#include <cmath>
+#include <algorithm>
+#include <cctype>
 
 
 class BitcoinEx {
@@ -22,7 +23,8 @@ class BitcoinEx {
 		BitcoinEx(const BitcoinEx &src);
 		BitcoinEx &operator=(const BitcoinEx &src);
 		void process(char const *filename);
-		void getExchangeRate(const std::string &date);
+		void removeWhiteSpaces(std::string &str);
+		float getRate(const std::string &date);
 		class fileCannotOpen : public std::exception
 		{
 			public:
@@ -38,21 +40,17 @@ class BitcoinEx {
 			public:
 				virtual const char *what() const throw();
 		};
-		class badInput : public std::exception
-		{
-			public:
-				badInput();
-				badInput(const std::string &date);
-				virtual const char *what() const throw();
-			private:
-				std::string _message;
-		};
 		class invalidFormat : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
 		};
 		class invalidPriceFormat : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+		class invalidDateFormat : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();
