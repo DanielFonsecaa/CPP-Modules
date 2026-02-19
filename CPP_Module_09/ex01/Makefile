@@ -1,13 +1,13 @@
 MAKE			= make
 
-NAME 			= mutant
+NAME 			= RPN
 
 _SUCCESS 		= $(GRN)SUCCESS$(D)
 
 SRC_PATH		= .
 INC_PATH		= .
 
-FILES			= main.cpp
+FILES			= main.cpp Rpn.cpp
 
 SRC				= $(addprefix $(SRC_PATH)/, $(FILES))
 
@@ -37,6 +37,10 @@ clean:				## Remove object files
 fclean: clean			## Remove executable and .gdbinit
 	@echo "$(GOLD)Cleaning executables$(D)"
 	@echo "$(GOLD)Removing $(SILV)$(NAME)$(D) file: $(_SUCCESS)";
+	@echo "$(GOLD)Cleaning extra files$(D)"
+	@rm -rf data.csv
+	@rm -rf input.*
+	@echo "$(GOLD)Removing $(SILV)data && input $(D) file: $(_SUCCESS)";
 
 re: fclean all	## Purge & Recompile
 
