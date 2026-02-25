@@ -23,8 +23,8 @@ void PmergeMe::run(int argc, char **argv){
 		//validate each argument
 		while (iss >> token){
 			bool isValid = true;
-			for( int j = 0; j < token.size(); j++){
-				if (std::isdigit(token[j])){
+			for(size_t j = 0; j < token.size(); j++){
+				if (!(std::isdigit(token[j]))){
 					isValid = false;
 					break;
 				}
@@ -131,35 +131,7 @@ void PmergeMe::fordJohnsonVector(std::vector<int> &vector, int pairSize){
 	// Comparator for comparing pair indices by last element
 	PairComparator< std::vector<int> > comp(vector, pairSize);
 	// Jacobsthal insertion of pend into main
-	int prevJacob = jacobsthal(1);
-	int numbersInserted = 0;
-	for (int k = 2; ; k++)
-	{
-		int currJacob = jacobsthal(k);
-		int differenceJacobs = currJacob - prevJacob;
-		if (differenceJacobs > static_cast<int>(pend.size()))
-			break;
-		int boundaryHits = 0;
-		int pendIndex = differenceJacobs - 1;
-		// Insert pend elements using binary search
-		for (int j = 0; j < differenceJacobs; j++)
-		{
-			int searchLimit = currJacob + numbersInserted - boundaryHits;
-			std::vector<int>::iterator pos = std::upper_bound(
-				main.begin(), main.begin() + searchLimit, pend[pendIndex], comp);
-
-			int insertPosition = pos - main.begin();
-			if (insertPosition == searchLimit)
-				boundaryHits++;
-
-			main.insert(pos, pend[pendIndex]);
-			pendIndex--;
-		}
-		// Remove processed elements from pend and update counters
-		pend.erase(pend.begin(), pend.begin() + differenceJacobs);
-		prevJacob = currJacob;
-		numbersInserted += differenceJacobs;
-	}
+	helperJohnson(main, pend, comp);
 	// Insert any remaining pend elements
 	// Process from the end to preserve the intended insertion order
 	for (int i = static_cast<int>(pend.size()) - 1; i >= 0; i--)
@@ -173,15 +145,94 @@ void PmergeMe::fordJohnsonVector(std::vector<int> &vector, int pairSize){
 	// Rebuild the final sorted sequence by copying pairs in 'main' order
 	std::vector<int> temp;
 	temp.reserve(vector.size());
-	for (size_t i = 0; i < main.size(); ++i)
+	for (size_t i = 0; i < main.size(); i++)
 	{
 		size_t pairStart = static_cast<size_t>(main[i]) * pairSize;
 		size_t end = std::min(pairStart + pairSize, vector.size());
 		for (size_t idx = pairStart; idx < end; ++idx)
 			temp.push_back(vector[idx]);
 	}
+	// Handle any remaining elements (odd unpaired element)
+	if (temp.size() < vector.size())
+	{
+		// Add the remaining elements from the end of the vector
+		for (size_t idx = temp.size(); idx < vector.size(); ++idx)
+			temp.push_back(vector[idx]);
+	}
 	// Copy the rebuilt order back into the original vector
 	vector.assign(temp.begin(), temp.end());
 };
 
-void PmergeMe::fordJohnsonDeque(std::deque<int> &deque, int pairSize){}
+void PmergeMe::fordJohnsonDeque(std::deque<int> &deque, int pairSize){
+		// Calculate how many pairs exist at this recursion level
+	int pairCount = deque.size() / pairSize;
+	if (pairCount < 2)
+		return;
+	bool isOdd = pairCount % 2 == 1;
+	// Number of pairs we can process (excluding the odd one)
+	int workPairs = pairCount - isOdd;
+	// Phase 1: Compare adjacent pairs and swap if right < left
+	// This ensures the larger element of each pair is in the right position
+	for(int i = 0; i < workPairs; i += 2){
+		int lastLeft = getLastPair(deque, i, pairSize);
+		int rightLeft = getLastPair(deque, i + 1, pairSize);
+		if (rightLeft < lastLeft)
+			swapPair(deque, i, pairSize);
+	}
+	// Phase 2: Recursively sort pairs at the next level (pair size doubles)
+	fordJohnsonDeque(deque, pairSize * 2);
+
+	std::vector<int> main;
+	std::vector<int> pend;
+	// Reserve to avoid reallocations while inserting
+	main.reserve(pairCount);
+	pend.reserve(pairCount);
+	// Start main chain with the first two sorted pairs
+	main.push_back(0);
+	main.push_back(1);
+	// Distribute remaining pairs: evens to pend, odds to main
+	// The main is initialised with the elements {b1, a1} and then with the rest of as.
+	// The pend is initialised with the rest of bs starting from b2
+	for (int i = 2; i < pairCount - isOdd; i++)
+		(i % 2 == 0 ? pend : main).push_back(i);
+	// If there's an unpaired last pair, add it to pend
+	if (isOdd)
+		pend.push_back(pairCount - 1);
+	// Comparator for comparing pair indices by last element
+	PairComparator< std::deque<int> > comp(deque, pairSize);
+	// Jacobsthal insertion of pend into main
+	helperJohnson(main, pend, comp);
+	// Insert any remaining pend elements
+	// Process from the end to preserve the intended insertion order
+	for (int i = static_cast<int>(pend.size()) - 1; i >= 0; i--)
+	{
+		// Bound the search to the already-sorted prefix of main
+		int searchLimit = main.size() - pend.size() + i + isOdd;
+		std::vector<int>::iterator pos = std::upper_bound(
+			main.begin(), main.begin() + searchLimit, pend[i], comp);
+		main.insert(pos, pend[i]);
+	}
+	// Rebuild the final sorted sequence by copying pairs in 'main' order
+	std::vector<int> temp;
+	temp.reserve(deque.size());
+	for (size_t i = 0; i < main.size(); ++i)
+	{
+		size_t pairStart = static_cast<size_t>(main[i]) * pairSize;
+		size_t end = std::min(pairStart + pairSize, deque.size());
+		for (size_t idx = pairStart; idx < end; ++idx)
+			temp.push_back(deque[idx]);
+	}
+	// Handle any remaining elements (odd unpaired element)
+	if (temp.size() < deque.size())
+	{
+		// Add the remaining elements from the end of the deque
+		for (size_t idx = temp.size(); idx < deque.size(); ++idx)
+			temp.push_back(deque[idx]);
+	}
+	// Copy the rebuilt order back into the original deque
+	deque.assign(temp.begin(), temp.end());
+}
+
+const char* PmergeMe::InvalidArgument::what() const throw(){
+	return "Error: Invalid input";
+};
