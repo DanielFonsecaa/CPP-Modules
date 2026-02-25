@@ -17,8 +17,6 @@
 - [🎯 Concepts Covered](#-concepts-covered)
 - [🧪 Testing](#-testing)
 - [📚 Resources](#-resources)
-- [👤 Author](#-author)
-- [📄 License](#-license)
 
 ## 📖 About
 
