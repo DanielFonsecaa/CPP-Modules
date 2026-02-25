@@ -143,6 +143,18 @@ Working with Standard Template Library containers and algorithms.
 
 **Key Concepts:** STL containers, iterators, algorithms, container adapters
 
+---
+
+### CPP Module 09 - Real-World Applications
+Practical applications combining advanced C++ concepts with algorithmic challenges.
+
+**Exercises:**
+- **ex00**: `BitcoinExchange` - Parse CSV and compute Bitcoin exchange rates
+- **ex01**: `RPN` - Reverse Polish Notation calculator
+- **ex02**: `PmergeMe` - Ford-Johnson merge-insertion sort algorithm
+
+**Key Concepts:** File parsing, algorithm implementation, STL container selection, performance optimization
+
 ## 🛠️ Compilation
 
 Each module includes a **Makefile** for easy compilation. All projects are compiled with:
@@ -244,6 +256,10 @@ CPP/
 │   ├── ex00/          # easyfind
 │   ├── ex01/          # Span
 │   └── ex02/          # MutantStack
+├── 📂 cpp09/          # Real-World Applications
+│   ├── ex00/          # BitcoinExchange
+│   ├── ex01/          # RPN Calculator
+│   └── ex02/          # PmergeMe
 ├── Makefile           # Root makefile
 └── make_all.sh        # Compilation script
 ```
@@ -276,6 +292,7 @@ CPP/
 | **06** | 🔹 Type casting, static_cast, dynamic_cast, reinterpret_cast |
 | **07** | 🔹 Function templates, Class templates, Generic programming |
 | **08** | 🔹 STL containers, Iterators, Algorithms, Container adapters |
+| **09** | 🔹 File parsing, Algorithmic implementations, Sorting algorithms |
 
 ## 🧪 Testing
 
@@ -294,3 +311,4 @@ Each module includes a `main.cpp` with comprehensive tests. Example outputs demo
 - [Learn C++](https://www.learncpp.com/)
 - [C++98 Standard](https://www.iso.org/standard/25845.html)
 - [STL Documentation](https://www.cplusplus.com/reference/stl/)
+- [Ford-Johnson Algorithm Explanation](https://dev.to/emuminov/human-explanation-and-step-by-step-visualisation-of-the-ford-johnson-algorithm-5g91)
